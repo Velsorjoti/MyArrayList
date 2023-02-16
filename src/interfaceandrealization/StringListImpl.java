@@ -2,7 +2,7 @@ package interfaceandrealization;
 import myexception.NonCorrectIndexException;
 import myexception.OhYourElementNotFoundExeption;
 import java.util.Arrays;
-public class StringListImpl implements StringList {
+public class StringListImpl implements StringList<String> {
     private static final int CAPACITY = 10;
     private String[] massiv;
     private int size;
