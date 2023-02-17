@@ -106,7 +106,7 @@ public class StringListImplInteger<G> implements StringList<Integer> {
     public boolean contains(Integer item) {
         if (item == null)
             throw new NullPointerException("Ничего не передано");
-        sortSelection();
+        quickSort(massivI,0, size - 1);
         return binarySearch(item);
     }
 
@@ -193,7 +193,7 @@ public class StringListImplInteger<G> implements StringList<Integer> {
         arr[indexB] = tmp;
     }
 
-    public static void sortSelection(Integer[] arr) {
+    public  void sortSelection(Integer[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int minElementIndex = i;
             for (int j = i + 1; j < arr.length; j++) {
@@ -220,5 +220,30 @@ public class StringListImplInteger<G> implements StringList<Integer> {
             }
         }
         return false;
+    }
+
+    public void quickSort(Integer[] massivI, int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(massivI, begin, end);
+
+            quickSort(massivI, begin, partitionIndex - 1);
+            quickSort(massivI, partitionIndex + 1, end);
+        }
+    }
+
+    private  int partition(Integer[] massiveI, int begin, int end) {
+        int pivot = massiveI[end];
+        int i = (begin - 1);
+
+        for (int j = begin; j < end; j++) {
+            if (massiveI[j] <= pivot) {
+                i++;
+
+                swapElements(massiveI, i, j);
+            }
+        }
+
+        swapElements(massiveI, i + 1, end);
+        return i + 1;
     }
 }
