@@ -23,7 +23,7 @@ public class StringListImplInteger<G> implements StringList<Integer> {
     private void grow() {
         int oldCapacity = massivI.length;
         int newCapacity;
-        newCapacity = oldCapacity / 3 * 2;
+        newCapacity = oldCapacity / 2 * 3;
         massivI = Arrays.copyOf(massivI, newCapacity);
     }
 
@@ -245,5 +245,13 @@ public class StringListImplInteger<G> implements StringList<Integer> {
 
         swapElements(massiveI, i + 1, end);
         return i + 1;
+    }
+
+    @Override
+    public String toString() {
+        return "StringListImplInteger{" +
+                "massivI=" + Arrays.toString(massivI) +
+                ", size=" + size +
+                '}';
     }
 }
